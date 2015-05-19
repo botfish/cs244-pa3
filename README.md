@@ -60,9 +60,38 @@ sudo npm install spdy
 Download the client:
 ```
 wget http://wprof.cs.washington.edu/spdy/tool/epload.tar.gz
-tar -xvf epload.tar.gz 
+tar -xvf epload.tar.gz
 ```
 
+Dependency Graph
+-----------------------------------
+Download Web Objects to the webserver
+```
+wget http://wprof.cs.washington.edu/spdy/tool/server.tar.gz
+tar -xvf server.tar.gz
+```
 
+Download Dependency Graphs to the webserver
+```
+wget http://wprof.cs.washington.edu/spdy/tool/dependency_graphs.tar.gz
+tar -xvf dependency_graphs.tar.gz
+```
 
+### Localhost specific instructions
+The following instructions are for experiments to be run on localhost, instructions
+to be run on Mininet could be very different
 
+Move pages to localhost
+```
+sudo cp -r server/* /var/www/
+```
+
+Rewrite URLs (host and path) in the dependency graphs
+x = website of interest.
+```
+vi dependency_graphs/x/x.json
+```
+In vim command, replace host with localhost.
+```
+:%s/ultralisk.cs.washington.edu/localhost/g
+```
