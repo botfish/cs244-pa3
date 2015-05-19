@@ -77,7 +77,7 @@ wget http://wprof.cs.washington.edu/spdy/tool/dependency_graphs.tar.gz
 tar -xvf dependency_graphs.tar.gz
 ```
 
-### Localhost specific instructions
+### Localhost Specific Instructions
 The following instructions are for experiments to be run on localhost, instructions
 to be run on Mininet could be very different
 
