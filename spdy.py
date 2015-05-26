@@ -91,9 +91,9 @@ class BBTopo(Topo):
 def spdy(net):
   print "Running SPDY experiments..."
   h1 = net.get('h1')
-  h1.cmd("./replace-spdyconf.sh sslspdy.conf")
+  h1.cmd("./replace-spdyconf.sh nosslspdy.conf")
   h1.popen("node ~/epload/emulator/run.js http" +
-      " ~/dg/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
+      " dg/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
   print "SPDY experiments done."
 
 def start_webserver(net):
