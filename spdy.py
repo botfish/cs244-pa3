@@ -68,39 +68,39 @@ parser.add_argument('--cong',
 args = parser.parse_args()
 
 class BBTopo(Topo):
-    "Simple topology for SPDY experiment."
+  "Simple topology for SPDY experiment."
 
-    def build(self, n=2):
-        print "Building topology..."
-        h1 = self.addHost('h1')
-        h2 = self.addHost('h2')
+  def build(self, n=2):
+    print "Building topology..."
+    h1 = self.addHost('h1')
+    h2 = self.addHost('h2')
 
-        # Here I have created a switch.  If you change its name, its
-        # interface names will change from s0-eth1 to newname-eth1.
-        switch = self.addSwitch('s0')
+    # Here I have created a switch.  If you change its name, its
+    # interface names will change from s0-eth1 to newname-eth1.
+    switch = self.addSwitch('s0')
 
-        delay = str(args.delay) + "ms"
-        h1_link_opts = dict(bw=args.bw_host, delay=delay,
-            max_queue_size=args.maxq)
-        h2_link_opts = dict(bw=args.bw_net, delay=delay,
-            max_queue_size=args.maxq)
-        self.addLink(h1, switch, **h1_link_opts);
-        self.addLink(h2, switch, **h2_link_opts);
-        return
+    delay = str(args.delay) + "ms"
+    h1_link_opts = dict(bw=args.bw_host, delay=delay,
+        max_queue_size=args.maxq)
+    h2_link_opts = dict(bw=args.bw_net, delay=delay,
+        max_queue_size=args.maxq)
+    self.addLink(h1, switch, **h1_link_opts);
+    self.addLink(h2, switch, **h2_link_opts);
+    return
 
 def bufferbloat():
-    if not os.path.exists(args.dir):
-        os.makedirs(args.dir)
-    os.system("sysctl -w net.ipv4.tcp_congestion_control=%s" % args.cong)
-    topo = BBTopo()
-    net = Mininet(topo=topo, host=CPULimitedHost, link=TCLink)
-    net.start()
-    # This dumps the topology and how nodes are interconnected through links.
-    dumpNodeConnections(net.hosts)
-    # This performs a basic all pairs ping test.
-    net.pingAll()
-    # Ensure that all processes you create within Mininet are killed.
-    net.stop()
+  if not os.path.exists(args.dir):
+    os.makedirs(args.dir)
+  os.system("sysctl -w net.ipv4.tcp_congestion_control=%s" % args.cong)
+  topo = BBTopo()
+  net = Mininet(topo=topo, host=CPULimitedHost, link=TCLink)
+  net.start()
+  # This dumps the topology and how nodes are interconnected through links.
+  dumpNodeConnections(net.hosts)
+  # This performs a basic all pairs ping test.
+  net.pingAll()
+  # Ensure that all processes you create within Mininet are killed.
+  net.stop()
 
 if __name__ == "__main__":
-    bufferbloat()
+  bufferbloat()
