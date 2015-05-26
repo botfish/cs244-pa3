@@ -26,7 +26,7 @@ for qsize in 20 100; do
   # the required naming convention when submitting your tarball.
 
   # Graphs go in the root folder, based on names in the assignment
-  python plot_tcpprobe.py -f $dir/cwnd.txt -o cwnd-q$qsize.png -p $iperf_port
-  python plot_queue.py -f $dir/q.txt -o buffer-q$qsize.png
-  python plot_ping.py -f $dir/ping.txt -o rtt-q$qsize.png
+  # python plot_tcpprobe.py -f $dir/cwnd.txt -o cwnd-q$qsize.png -p $iperf_port
+  # python plot_queue.py -f $dir/q.txt -o buffer-q$qsize.png
+  # python plot_ping.py -f $dir/ping.txt -o rtt-q$qsize.png
 done
