@@ -89,10 +89,20 @@ class BBTopo(Topo):
     return
 
 def spdy(net):
+  print "Running SPDY experiments..."
   h1 = net.get('h1')
-  h1.cmd("./replace-spdyconf.sh nosslspdy.conf")
-  h1.popen("node ~/epload/emulator/run.js spdy" +
-      " ~/dependency_graphs/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
+  h1.cmd("./replace-spdyconf.sh sslspdy.conf")
+  h1.popen("node ~/epload/emulator/run.js http" +
+      " ~/dg/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
+  print "SPDY experiments done."
+
+def start_webserver(net):
+  print "Starting webserver..."
+  h2 = net.get('h2')
+  h2.cmd("apt-get install apache2")
+  h2.cmd("dpkg -i mod-spdy-beta_current_amd64.deb")
+  h2.cmd("service apache2 restart")
+  print "Webserver started."
 
 def bufferbloat():
   if not os.path.exists(args.dir):
@@ -105,6 +115,8 @@ def bufferbloat():
   dumpNodeConnections(net.hosts)
   # This performs a basic all pairs ping test.
   net.pingAll()
+  # Start webserver.
+  start_webserver(net)
   # Run SPDY experiments.
   spdy(net)
   # Ensure that all processes you create within Mininet are killed.
