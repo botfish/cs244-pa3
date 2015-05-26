@@ -21,7 +21,7 @@ import sys
 import os
 import math
 
-parser = ArgumentParser(description="Bufferbloat tests")
+parser = ArgumentParser(description="SPDY tests")
 parser.add_argument('--bw-host', '-B',
                     type=float,
                     help="Bandwidth of host links (Mb/s)",
@@ -92,16 +92,14 @@ def spdy(net):
   print "Running SPDY experiments..."
   h1 = net.get('h1')
   h1.cmd("./replace-spdyconf.sh nosslspdy.conf")
-  h1.popen("node ~/epload/emulator/run.js http" +
+  h1.popen("node ~/epload/emulator/run.js spdy" +
       " dg/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
   print "SPDY experiments done."
 
 def start_webserver(net):
   print "Starting webserver..."
   h2 = net.get('h2')
-  h2.cmd("apt-get install apache2")
-  h2.cmd("dpkg -i mod-spdy-beta_current_amd64.deb")
-  h2.cmd("service apache2 restart")
+  h2.cmd("sudo service apache2 start")
   print "Webserver started."
 
 def bufferbloat():
