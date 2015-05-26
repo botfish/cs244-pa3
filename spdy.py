@@ -14,9 +14,7 @@ from subprocess import Popen, PIPE
 from time import sleep, time
 from multiprocessing import Process
 from argparse import ArgumentParser
-from helper import avg, stdev
 
-from monitor import monitor_qlen
 import termcolor as T
 
 import sys
@@ -41,7 +39,7 @@ parser.add_argument('--delay',
 
 parser.add_argument('--dir', '-d',
                     help="Directory to store outputs",
-                    required=True)
+                    default=".")
 
 parser.add_argument('--time', '-t',
                     help="Duration (sec) to run the experiment",
@@ -82,8 +80,10 @@ class BBTopo(Topo):
         switch = self.addSwitch('s0')
 
         delay = str(args.delay) + "ms"
-        h1_link_opts = dict(bw=args.bw_host, delay=delay, max_queue_size=args.maxq)
-        h2_link_opts = dict(bw=args.bw_net, delay=delay, max_queue_size=args.maxq)
+        h1_link_opts = dict(bw=args.bw_host, delay=delay,
+            max_queue_size=args.maxq)
+        h2_link_opts = dict(bw=args.bw_net, delay=delay,
+            max_queue_size=args.maxq)
         self.addLink(h1, switch, **h1_link_opts);
         self.addLink(h2, switch, **h2_link_opts);
         return
@@ -95,8 +95,7 @@ def bufferbloat():
     topo = BBTopo()
     net = Mininet(topo=topo, host=CPULimitedHost, link=TCLink)
     net.start()
-    # This dumps the topology and how nodes are interconnected through
-    # links.
+    # This dumps the topology and how nodes are interconnected through links.
     dumpNodeConnections(net.hosts)
     # This performs a basic all pairs ping test.
     net.pingAll()
