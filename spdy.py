@@ -53,6 +53,11 @@ parser.add_argument('--maxq',
                     help="Max buffer size of network interface in packets",
                     default=100)
 
+parser.add_argument('--loss',
+                    type=int,
+                    help="Packet loss rate (%)",
+                    default=0)
+
 # Linux uses CUBIC-TCP by default that doesn't have the usual sawtooth
 # behaviour.  For those who are curious, invoke this script with
 # --cong cubic and see what happens...
