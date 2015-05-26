@@ -16,8 +16,7 @@ delay=5
 iperf_port=5001
 
 for qsize in 100; do
-  dir=bb-q$qsize
-
+  dir=result_spdy
   # Run bufferbloat.py here...
   python spdy.py -b $bwnet --delay $delay -d $dir --maxq $qsize --time $time
 

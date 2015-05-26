@@ -88,6 +88,12 @@ class BBTopo(Topo):
     self.addLink(h2, switch, **h2_link_opts);
     return
 
+def spdy(net):
+  h1 = net.get('h1')
+  h1.cmd("./replace-spdyconf.sh nosslspdy.conf")
+  h1.popen("node ~/epload/emulator/run.js spdy" +
+      " ~/dependency_graphs/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
+
 def bufferbloat():
   if not os.path.exists(args.dir):
     os.makedirs(args.dir)
@@ -99,6 +105,8 @@ def bufferbloat():
   dumpNodeConnections(net.hosts)
   # This performs a basic all pairs ping test.
   net.pingAll()
+  # Run SPDY experiments.
+  spdy(net)
   # Ensure that all processes you create within Mininet are killed.
   net.stop()
 
