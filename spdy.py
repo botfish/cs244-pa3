@@ -52,7 +52,7 @@ parser.add_argument('--maxq',
                     default=100)
 
 parser.add_argument('--loss',
-                    type=int,
+                    type=float,
                     help="Packet loss rate (%)",
                     default=0)
 
@@ -80,9 +80,9 @@ class BBTopo(Topo):
     switch = self.addSwitch('s0')
 
     delay = str(args.delay) + "ms"
-    h1_link_opts = dict(bw=args.bw_host, delay=delay,
+    h1_link_opts = dict(bw=args.bw_net, delay=delay, loss = args.loss,
         max_queue_size=args.maxq)
-    h2_link_opts = dict(bw=args.bw_net, delay=delay,
+    h2_link_opts = dict(bw=args.bw_host, delay=delay, loss = args.loss,
         max_queue_size=args.maxq)
     self.addLink(h1, switch, **h1_link_opts);
     self.addLink(h2, switch, **h2_link_opts);
@@ -90,16 +90,38 @@ class BBTopo(Topo):
 
 def spdy(net):
   print "Running SPDY experiments..."
+  outfile = "spdy"
   h1 = net.get('h1')
+
+  # Replace Apache SPDY config file for SPDY.
+  h1.cmd("./replace-spdyconf.sh nosslspdy.conf")
+
+  # Restart webserver in h2.
+  start_webserver(net)
+
   h1.cmd("node ~/epload/emulator/run.js spdy" +
-      " dg/58.com_/ > %s/%s" % (args.dir, 1))
+      " dg/58.com_/ > %s/%s" % (args.dir, outfile))
   print "SPDY experiments done."
+
+def http(net):
+  print "Running HTTP experiments..."
+  outfile = "http"
+  h1 = net.get('h1')
+
+  # Replace Apache SPDY config file for HTTP.
+  h1.cmd("./replace-spdyconf.sh sslspdy.conf")
+
+  # Restart webserver in h2.
+  start_webserver(net)
+
+  h1.cmd("node ~/epload/emulator/run.js http" +
+      " dg/58.com_/ > %s/%s" % (args.dir, outfile))
+  print "HTTP experiments done."
 
 def start_webserver(net):
   print "Starting webserver..."
   os.system('sudo service apache2 stop') #stop it if it is running on the system
   h2 = net.get('h2')
-  h2.cmd("./replace-spdyconf.sh nosslspdy.conf")
   h2.cmd("sudo service apache2 start")
   print "Webserver started."
 
@@ -114,10 +136,12 @@ def bufferbloat():
   dumpNodeConnections(net.hosts)
   # This performs a basic all pairs ping test.
   net.pingAll()
-  # Start webserver.
-  start_webserver(net)
+
   # Run SPDY experiments.
   spdy(net)
+  # Run HTTP experiments.
+  http(net)
+
   # Ensure that all processes you create within Mininet are killed.
   net.stop()
 
