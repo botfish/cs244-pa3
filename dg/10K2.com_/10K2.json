@@ -1,0 +1,50 @@
+{
+    "deps": [
+        {
+            "a1": "r1_c", 
+            "a2": "r2_d", 
+            "id": "dep1", 
+            "time": 100
+        }
+    ], 
+    "description": "obj_size = 10K, obj_num = 2", 
+    "load_activity": "r2_c", 
+    "name": "10K2", 
+    "objs": [
+        {
+            "comps": [
+                {
+                    "id": "r1_c", 
+                    "time": 200, 
+                    "type": "evalhtml"
+                }
+            ], 
+            "download": {
+                "id": "r1_d", 
+                "type": "download"
+            }, 
+            "host": "10.0.0.2", 
+            "id": "r1", 
+            "path": "/pages/rawobj.com/obj_10K.js", 
+            "when_comp_start": 1
+        }, 
+        {
+            "comps": [
+                {
+                    "id": "r2_c", 
+                    "time": 200, 
+                    "type": "evaljs"
+                }
+            ], 
+            "download": {
+                "id": "r2_d", 
+                "type": "download"
+            }, 
+            "host": "10.0.0.2", 
+            "id": "r2", 
+            "path": "/pages/rawobj.com/obj_10K.js", 
+            "when_comp_start": -1
+        }
+    ], 
+    "start_activity": "r1_d"
+}
