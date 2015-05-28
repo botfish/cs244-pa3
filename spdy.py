@@ -91,14 +91,15 @@ class BBTopo(Topo):
 def spdy(net):
   print "Running SPDY experiments..."
   h1 = net.get('h1')
-  h1.cmd("./replace-spdyconf.sh nosslspdy.conf")
-  h1.popen("node ~/epload/emulator/run.js spdy" +
-      " dg/58.com_/ > %s/%s" % (args.dir, 1), shell=True)
+  h1.cmd("node ~/epload/emulator/run.js spdy" +
+      " dg/58.com_/ > %s/%s" % (args.dir, 1))
   print "SPDY experiments done."
 
 def start_webserver(net):
   print "Starting webserver..."
+  os.system('sudo service apache2 stop') #stop it if it is running on the system
   h2 = net.get('h2')
+  h2.cmd("./replace-spdyconf.sh nosslspdy.conf")
   h2.cmd("sudo service apache2 start")
   print "Webserver started."
 
