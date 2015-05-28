@@ -59,7 +59,7 @@ parser.add_argument('--loss',
 parser.add_argument('--dg',
                     type=str,
                     help="Name of the dependency graph",
-                    default="10k64")
+                    default="10K64")
 
 # Linux uses CUBIC-TCP by default that doesn't have the usual sawtooth
 # behaviour.  For those who are curious, invoke this script with

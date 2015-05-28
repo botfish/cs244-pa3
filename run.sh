@@ -4,13 +4,15 @@
 # using sudo.
 
 bwnet=10
-delay=50
-timestamp=$(date +"%d-%h-%M-%S")
+delay=50 # RTT = 200ms
+timestamp=$(date +"%d-%H-%M-%S")
 
 for loss in 0 0.5 1 2; do
+# for loss in 0 ; do
   dir=result/$timestamp/loss_$loss
+  dg=10K64
   # Run spdy.py here...
-  python spdy.py -b $bwnet -d $dir --delay $delay --loss $loss
+  python spdy.py -b $bwnet -d $dir --dg $dg --delay $delay --loss $loss
 
   # Graphs go in the root folder, based on names in the assignment
   # python plot_tcpprobe.py -f $dir/cwnd.txt -o cwnd-q$qsize.png -p $iperf_port

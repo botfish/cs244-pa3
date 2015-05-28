@@ -95,3 +95,15 @@ In vim command, replace host with localhost.
 ```
 :%s/ultralisk.cs.washington.edu/localhost/g
 ```
+
+### To generate dependency graph
+First need to have base webpage on server
+```
+sudo cp -r rawobj /var/www/pages
+```
+Then can run gen_dp.py, for example to generate a dependency graph with
+64 10K objects.
+```
+python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
+```
+Use ``` python gen_dp.py -h ``` for details on options.
