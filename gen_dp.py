@@ -39,9 +39,9 @@ def gen():
     name = str(args.size) + 'K' + str(args.num)
     desc = "obj_size = " + str(args.size) + "K, " + "obj_num = " + str(args.num)
   else:
-    path = "/pages/rawobj.com/obj_" + str(args.size) + "B.js"
-    name = str(args.size) + 'B' + str(args.num)
-    desc = "obj_size = " + str(args.size) + "B, " + "obj_num = " + str(args.num)
+    path = "/pages/rawobj.com/obj_100B.js"
+    name = '100B' + str(args.num)
+    desc = "obj_size = 100B, " + "obj_num = " + str(args.num)
   dg = {
       'name' : name,
       'description' : desc,
