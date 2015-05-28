@@ -8,14 +8,20 @@ delay=50 # RTT = 200ms
 timestamp=$(date +"%d-%H-%M-%S")
 
 for loss in 0 0.5 1 2; do
-# for loss in 0 ; do
   dir=result/$timestamp/loss_$loss
-  dg=10K64
-  # Run spdy.py here...
-  python spdy.py -b $bwnet -d $dir --dg $dg --delay $delay --loss $loss
+  python spdy.py -b $bwnet -d $dir --delay $delay --loss $loss
+done
 
-  # Graphs go in the root folder, based on names in the assignment
-  # python plot_tcpprobe.py -f $dir/cwnd.txt -o cwnd-q$qsize.png -p $iperf_port
-  # python plot_queue.py -f $dir/q.txt -o buffer-q$qsize.png
-  # python plot_ping.py -f $dir/ping.txt -o rtt-q$qsize.png
+declare -a arr=("100B64" "1K64" "10K64" "100K64")
+for i in "${arr[@]}"; do
+  dir=result/$timestamp/objsize_$i
+  echo $i
+  python spdy.py -b $bwnet -d $dir --delay $delay --dg $i
+done
+
+declare -a arr=("10K2" "10K8" "10K16" "10K32" "10K64" "10K128")
+for i in "${arr[@]}"; do
+  dir=result/$timestamp/objnum_$i
+  echo $i
+  python spdy.py -b $bwnet -d $dir --delay $delay --dg $i
 done
