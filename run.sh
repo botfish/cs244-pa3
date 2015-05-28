@@ -6,10 +6,9 @@
 bwnet=10
 delay=50
 timestamp=$(date +%s)
-sep=_loss_
 
 for loss in 0 0.5 1 2; do
-  dir=loss/$timestamp$sep$loss
+  dir=result/$timestamp/loss_$loss
   # Run spdy.py here...
   python spdy.py -b $bwnet -d $dir --delay $delay --loss $loss
 
