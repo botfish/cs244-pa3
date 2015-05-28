@@ -5,7 +5,7 @@
 
 bwnet=10
 delay=50
-timestamp=$(date +%s)
+timestamp=$(date +"%d-%h-%M-%S")
 
 for loss in 0 0.5 1 2; do
   dir=result/$timestamp/loss_$loss

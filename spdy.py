@@ -56,6 +56,11 @@ parser.add_argument('--loss',
                     help="Packet loss rate (%)",
                     default=0)
 
+parser.add_argument('--dg',
+                    type=str,
+                    help="Name of the dependency graph",
+                    default="10k64")
+
 # Linux uses CUBIC-TCP by default that doesn't have the usual sawtooth
 # behaviour.  For those who are curious, invoke this script with
 # --cong cubic and see what happens...
@@ -100,7 +105,7 @@ def spdy(net):
   start_webserver(net)
 
   h1.cmd("node ~/epload/emulator/run.js spdy" +
-      " dg/58.com_/ > %s/%s" % (args.dir, outfile))
+      " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "SPDY experiments done."
 
 def http(net):
@@ -115,7 +120,7 @@ def http(net):
   start_webserver(net)
 
   h1.cmd("node ~/epload/emulator/run.js http" +
-      " dg/58.com_/ > %s/%s" % (args.dir, outfile))
+      " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "HTTP experiments done."
 
 def start_webserver(net):
