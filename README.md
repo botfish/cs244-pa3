@@ -107,3 +107,11 @@ Then can run gen_dp.py, for example to generate a dependency graph with
 python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
 ```
 Use ``` python gen_dp.py -h ``` for details on options.
+
+Python Dependencies
+---------------------------------
+The graph maker uses the matplotlib and numpy Python libraries. To install:
+
+```
+sudo apt-get install python-matplotlib
+```
