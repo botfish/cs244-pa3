@@ -8,6 +8,9 @@ Requires matplotlib and numpy for the graphs
 import os
 import sys
 import math
+import matplotlib
+# Force matplotlib to not use any Xwindows backend, since we don't have a graphical environment
+matplotlib.use('Agg')
 import pylab
 from argparse import ArgumentParser
 import matplotlib.pyplot as plt
@@ -76,7 +79,6 @@ def parseData():
 # name is the filename of the graph
 def generateGraph(data, name):
 	print "Generating graph for " + name
-	print data
 	figure, axis = plt.subplots()
 
 	# make bars

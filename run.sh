@@ -25,3 +25,6 @@ for i in "${arr[@]}"; do
   echo $i
   python spdy.py -b $bwnet -d $dir --delay $delay --dg $i
 done
+
+# graph the results for Figure 3
+python figure3_plot.py -d result/$timestamp/ -o result/$timestamp
