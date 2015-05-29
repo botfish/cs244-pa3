@@ -32,12 +32,14 @@ args = parser.parse_args()
 types = ['http', 'spdy']
 graphs = ['loss', 'objnum', 'objsize']
 # these mappings are just so we can get the columns in the right order
+loss_map = {"0":0, "0.5":1, "1":2, "2":3}
+ln = len(loss_map)
 objnum_map = {"10K2":0, "10K8":1, "10K16":2, "10K32":3, "10K64":4,"10K128":5}
 on = len(objnum_map)
 objsize_map = {"100B64":0, "1K64":1, "10K64":2, "100K64":3}
 om = len(objsize_map)
 # data to graph
-extracted_data = {'Loss': [[],[],[]], 'Object Number': [[None]*on,[None]*on,[None]*on], 'Object Size': [[None]*om,[None]*om,[None]*om]}
+extracted_data = {'Loss': [[None]*ln,[None]*ln,[None]*ln], 'Object Number': [[None]*on,[None]*on,[None]*on], 'Object Size': [[None]*om,[None]*om,[None]*om]}
 
 # extracts the variable parameter from the name
 def getDirName(name):
@@ -50,9 +52,10 @@ def getDirName(name):
 # adds the data to the correct key-value pair of the results
 def addData(data, name):
 	if 'loss' in name:
-		extracted_data['Loss'][0].append(data[0])
-		extracted_data['Loss'][1].append(data[1])
-		extracted_data['Loss'][2].append(data[2])
+		index = loss_map[data[0]]
+		extracted_data['Loss'][0][index] = data[0]
+		extracted_data['Loss'][1][index] = data[1]
+		extracted_data['Loss'][2][index] = data[2]
 	# in these cases, the lexographic ordering the data comes in is not the ordering we want
 	elif 'objnum' in name: 
 		index = objnum_map[data[0]]
