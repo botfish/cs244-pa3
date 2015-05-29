@@ -67,7 +67,7 @@ parser.add_argument('--dg',
 # sysctl -a | grep cong should list some interesting parameters.
 parser.add_argument('--cong',
                     help="Congestion control algorithm to use",
-                    default="reno")
+                    default="cubic")
 
 # Expt parameters
 args = parser.parse_args()
