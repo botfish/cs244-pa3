@@ -28,10 +28,16 @@ parser.add_argument('--out', '-o',
 
 #parse arguments
 args = parser.parse_args()
-
+# file names to look for
 types = ['http', 'spdy']
 graphs = ['loss', 'objnum', 'objsize']
-extracted_data = {'Loss': [[],[],[]], 'Object Number': [[],[],[]], 'Object Size': [[],[],[]]}
+# these mappings are just so we can get the columns in the right order
+objnum_map = {"10K2":0, "10K8":1, "10K16":2, "10K32":3, "10K64":4,"10K128":5}
+on = len(objnum_map)
+objsize_map = {"100B64":0, "1K64":1, "10K64":2, "100K64":3}
+om = len(objsize_map)
+# data to graph
+extracted_data = {'Loss': [[],[],[]], 'Object Number': [[None]*on,[None]*on,[None]*on], 'Object Size': [[None]*om,[None]*om,[None]*om]}
 
 # extracts the variable parameter from the name
 def getDirName(name):
@@ -47,14 +53,17 @@ def addData(data, name):
 		extracted_data['Loss'][0].append(data[0])
 		extracted_data['Loss'][1].append(data[1])
 		extracted_data['Loss'][2].append(data[2])
-	elif 'objnum' in name:
-		extracted_data['Object Number'][0].append(data[0])
-		extracted_data['Object Number'][1].append(data[1])
-		extracted_data['Object Number'][2].append(data[2])
+	# in these cases, the lexographic ordering the data comes in is not the ordering we want
+	elif 'objnum' in name: 
+		index = objnum_map[data[0]]
+		extracted_data['Object Number'][0][index] = data[0]
+		extracted_data['Object Number'][1][index] = data[1]
+		extracted_data['Object Number'][2][index] = data[2]
 	elif 'objsize' in name:
-		extracted_data['Object Size'][0].append(data[0])
-		extracted_data['Object Size'][1].append(data[1])
-		extracted_data['Object Size'][2].append(data[2])
+		index = objsize_map[data[0]]
+		extracted_data['Object Size'][0][index] = data[0]
+		extracted_data['Object Size'][1][index] = data[1]
+		extracted_data['Object Size'][2][index] = data[2]
 
 # parse the page load times out of the command line output in the files
 def parseData():
@@ -67,8 +76,11 @@ def parseData():
 				with open(os.path.join(dirName, fname)) as f: # parse out the page load time
 					for line in f:
 						if "=== [page load time]" in line:
-							plt = float(line[20:].strip("\r\n"))
-							dir_data.append(plt)
+							plt = float(line[20:].strip("\r\n"))/1000.0
+							if fname == "http":
+								dir_data.insert(1,plt)
+							else:
+								dir_data.append(plt)
 							f.close()
 							break
 		# add the extracted data to the list
@@ -83,7 +95,7 @@ def generateGraph(data, name):
 
 	# make bars
 	x_places = np.arange(len(data[0]))
-	width = 0.2
+	width = 0.35
 	http_bars = axis.bar(x_places, data[1], width, color='b')
 	spdy_bars = axis.bar(x_places+width, data[2], width, color='r')
 
