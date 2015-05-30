@@ -89,6 +89,12 @@ def gen():
       }
       dg['deps'].append(dep)
 
+  # Make the graphs partially dependent.
+  for i in range(1, args.num/2):
+    dg['deps'][i]['a1'] = "r1_c"
+  for i in range(args.num/2, args.num/2 + args.num/3):
+    dg['deps'][i]['a1'] = "r2_c"
+
   # Dump pretty JSON
   json_str = json.dumps(dg, indent=4, sort_keys=True)
 

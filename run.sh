@@ -30,10 +30,11 @@ done
 # graph the results for Figure 3
 python figure3_plot.py -d result/$timestamp/ -o result/$timestamp
 
-# Figure 7 experiments
+Figure 7 experiments
 for graph in dg/www*/; do
     graph=${graph%*/}
     graph=${graph##*/}
     dir=result/$timestamp/retransmissions/$graph
     python spdy.py -b $bwnet -d $dir --delay $delay --dg $graph
 done
+echo $timestamp
