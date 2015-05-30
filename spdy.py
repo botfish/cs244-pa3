@@ -101,7 +101,7 @@ def spdy(net):
   # Restart webserver in h2.
   start_webserver(net)
  
-  if "www" in args.dg: #retransmission test
+  if not args.dg[0].isdigit(): #retransmission test
 	h1.cmd("node ~/epload/emulator/run.js spdy" +
       " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
 	h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
@@ -121,7 +121,7 @@ def http(net):
   # Restart webserver in h2.
   start_webserver(net)
   
-  if "www" in args.dg: #retransmission tests
+  if not args.dg[0].isdigit(): #retransmission tests
         h1.cmd("node ~/epload/emulator/run.js http" +
       " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
         h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
@@ -137,7 +137,7 @@ def start_webserver(net):
   h2.cmd("sudo service apache2 start")
   print "Webserver started."
 
-def bufferbloat():
+def run_experiment():
   if not os.path.exists(args.dir):
     os.makedirs(args.dir)
   os.system("sysctl -w net.ipv4.tcp_congestion_control=%s" % args.cong)
@@ -158,4 +158,4 @@ def bufferbloat():
   net.stop()
 
 if __name__ == "__main__":
-  bufferbloat()
+  run_experiment()
