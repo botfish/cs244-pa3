@@ -83,7 +83,7 @@ sudo cp -r rawobj.com /var/www/pages
 Then run gen_dp.py, for example to generate a dependency graph with
 64 10K objects.
 ```
-python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
+sudo python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
 ```
 See ``` python gen_dp.py -h ``` for more details.
 
