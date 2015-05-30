@@ -49,6 +49,8 @@ sudo dpkg -i mod-spdy-beta_current_amd64.deb
 sudo service apache2 restart
 ```
 
+Note: At this point, you could simply use the code in this repository as it is. Further instructions are included to give insights about how we constructed our setup.
+
 Installing SDPY Client
 -----------------------------------
 Install the node.js dependency:
@@ -70,6 +72,17 @@ Download the client:
 wget http://wprof.cs.washington.edu/spdy/tool/epload.tar.gz
 tar -xvf epload.tar.gz
 ```
+
+Remove lines of code that break the client:
+1. Open epload/client_spdy/spdy_client/spdy_client/session.js with your preferred text editor
+2. Comment out the lines (by putting // in front):
+```
+  if (!stream_n.isReady())
+    return;
+```
+The isReady() function does not appear to exist, so this will throw an error if not removed
+
+
 Python Dependencies
 ---------------------------------
 The graph maker uses the matplotlib and numpy Python libraries. To install:
