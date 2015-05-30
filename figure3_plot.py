@@ -73,6 +73,8 @@ def parseData():
 	print "Parsing data"
 	# walk the directory tree of the results folder
 	for dirName, subdirList, fileList in os.walk(args.dir):
+		if dirName == "retransmissions":
+			continue
 		dir_data = [getDirName(dirName)]
 		for fname in fileList:
 			if fname in types: #if this is a results file

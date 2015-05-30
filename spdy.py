@@ -61,10 +61,7 @@ parser.add_argument('--dg',
                     help="Name of the dependency graph",
                     default="10K64")
 
-# Linux uses CUBIC-TCP by default that doesn't have the usual sawtooth
-# behaviour.  For those who are curious, invoke this script with
-# --cong cubic and see what happens...
-# sysctl -a | grep cong should list some interesting parameters.
+# This paper uses Cubic
 parser.add_argument('--cong',
                     help="Congestion control algorithm to use",
                     default="cubic")
@@ -103,8 +100,13 @@ def spdy(net):
 
   # Restart webserver in h2.
   start_webserver(net)
-
-  h1.cmd("node ~/epload/emulator/run.js spdy" +
+ 
+  if "www" in args.dg: #retransmission test
+	h1.cmd("node ~/epload/emulator/run.js spdy" +
+      " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
+	h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
+  else: #other tests
+	h1.cmd("node ~/epload/emulator/run.js spdy" +
       " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "SPDY experiments done."
 
@@ -118,8 +120,13 @@ def http(net):
 
   # Restart webserver in h2.
   start_webserver(net)
-
-  h1.cmd("node ~/epload/emulator/run.js http" +
+  
+  if "www" in args.dg: #retransmission tests
+        h1.cmd("node ~/epload/emulator/run.js http" +
+      " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
+        h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
+  else: #other tests
+        h1.cmd("node ~/epload/emulator/run.js http" +
       " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "HTTP experiments done."
 
