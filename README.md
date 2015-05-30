@@ -9,8 +9,8 @@ More information about SDPY in general can be found [here](https://www.chromium.
 
 Simple Experiment Reproduction
 ===================================
-1. Start an EC2 instance of our AMI image {insert name here}. We used a c3.large instance.
-2. Start the instance and SSH into it
+1. Start an EC2 instance of our AMI image. The image name is "ReproducingSPDY" and the AMI ID is "ami-dd96a9ed". We used a c3.large instance.
+2. Start the instance and SSH into it using ```ssh ubuntu@<DNS name>``
 3. ```cd cs244-pa3```
 4. ```sudo ./run.sh```
 5. The results will be in the “result” folder in cs244-pa3
