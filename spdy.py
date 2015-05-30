@@ -101,7 +101,7 @@ def spdy(net):
   # Restart webserver in h2.
   start_webserver(net)
  
-  if "www" in args.dg: #retransmission test
+  if not args.dg[0].isdigit(): #retransmission test
 	h1.cmd("node ~/epload/emulator/run.js spdy" +
       " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
 	h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
@@ -121,7 +121,7 @@ def http(net):
   # Restart webserver in h2.
   start_webserver(net)
   
-  if "www" in args.dg: #retransmission tests
+  if not args.dg[0].isdigit(): #retransmission tests
         h1.cmd("node ~/epload/emulator/run.js http" +
       " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
         h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
