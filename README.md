@@ -3,11 +3,19 @@ Reproducing SPDY Test Results
 ====================================
 The goal of this project is to reproduce some of the graphs found in [this paper](https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-wang_xiao_sophia.pdf).
 
-Code and tools for this paper were published by the authors [here](https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-wang_xiao_sophia.pdf).
+Code and tools for this paper were published by the authors [here](http://wprof.cs.washington.edu/spdy/tool/)
 
 More information about SDPY in general can be found [here](https://www.chromium.org/spdy).
 
-Environment Setup
+Simple Experiment Reproduction
+===================================
+1. Start an EC2 instance of our AMI image {insert name here}. We used a c3.large instance.
+2. Start the instance and SSH into it
+3. ```cd cs244-pa3```
+4. ```sudo ./run.sh```
+5. The results will be in the “result” folder in cs244-pa3
+
+Complete Environment Setup
 ====================================
 The starting system was a VM provided by CS 244 for Project 2.
 AMI ID: CS244-Win13-Mininet (ami-7eab204e)
@@ -22,7 +30,7 @@ deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-updates main restricted univ
 deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-security main restricted universe multiverse
 
 # Optional
-#deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-backports main restricted universe multiverse
+# deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-backports main restricted universe multiverse
 ```
 
 Installing Apache Webserver
@@ -40,6 +48,8 @@ wget https://dl-ssl.google.com/dl/linux/direct/mod-spdy-beta_current_amd64.deb
 sudo dpkg -i mod-spdy-beta_current_amd64.deb 
 sudo service apache2 restart
 ```
+
+Note: At this point, you could simply use the code in this repository as it is. Further instructions are included to give insights about how we constructed our setup.
 
 Installing SDPY Client
 -----------------------------------
@@ -63,50 +73,15 @@ wget http://wprof.cs.washington.edu/spdy/tool/epload.tar.gz
 tar -xvf epload.tar.gz
 ```
 
-Dependency Graph
------------------------------------
-Download Web Objects to the webserver
+Remove lines of code that break the client:
+1. Open epload/client_spdy/spdy_client/spdy_client/session.js with your preferred text editor
+2. Comment out the lines (by putting // in front):
 ```
-wget http://wprof.cs.washington.edu/spdy/tool/server.tar.gz
-tar -xvf server.tar.gz
+  if (!stream_n.isReady())
+    return;
 ```
+The isReady() function does not appear to exist, so this will throw an error if not removed
 
-Download Dependency Graphs to the webserver
-```
-wget http://wprof.cs.washington.edu/spdy/tool/dependency_graphs.tar.gz
-tar -xvf dependency_graphs.tar.gz
-```
-
-### Localhost Specific Instructions
-The following instructions are for experiments to be run on localhost, instructions
-to be run on Mininet could be very different
-
-Move pages to localhost
-```
-sudo cp -r server/* /var/www/
-```
-
-Rewrite URLs (host and path) in the dependency graphs
-x = website of interest.
-```
-vi dependency_graphs/x/x.json
-```
-In vim command, replace host with localhost.
-```
-:%s/ultralisk.cs.washington.edu/localhost/g
-```
-
-### To generate dependency graph
-First need to have base webpage on server
-```
-sudo cp -r rawobj /var/www/pages
-```
-Then can run gen_dp.py, for example to generate a dependency graph with
-64 10K objects.
-```
-python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
-```
-Use ``` python gen_dp.py -h ``` for details on options.
 
 Python Dependencies
 ---------------------------------
@@ -115,3 +90,45 @@ The graph maker uses the matplotlib and numpy Python libraries. To install:
 ```
 sudo apt-get install python-matplotlib
 ```
+
+Test Configurations
+====================================
+The following instructions are not necessary for running our experiments, they
+are here for customized experiments.
+
+Test Parameters Adjustments
+-----------------------------------
+Vim (or your editor) run.sh
+```
+vim run.sh
+```
+Paramters -
+* ```bwnet``` Bandwidth (Mbps).
+* ```delay``` Delay on a single link, RTT/4 (ms).
+* ```loss```  Packet loss rate (%).
+* ```arr```   An array of the dependency graph name.
+
+Dependency Graph Generation
+-----------------------------------
+Make a directory on web server to hold testing web pages
+```
+sudo mkdir /var/www/pages
+```
+Copy base web objects to server testing page
+```
+sudo cp -r rawobj.com /var/www/pages
+```
+Then run gen_dp.py, for example to generate a dependency graph with
+64 10K objects.
+```
+sudo python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
+```
+See ``` python gen_dp.py -h ``` for more details.
+
+Epload Specific Configurations
+-----------------------------------
+Vim (or your editor) run.js
+```
+vim epload/emulator/run.js
+```
+Configurations are done by hardcoding into ```options``` variable.

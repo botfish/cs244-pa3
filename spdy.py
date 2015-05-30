@@ -61,13 +61,10 @@ parser.add_argument('--dg',
                     help="Name of the dependency graph",
                     default="10K64")
 
-# Linux uses CUBIC-TCP by default that doesn't have the usual sawtooth
-# behaviour.  For those who are curious, invoke this script with
-# --cong cubic and see what happens...
-# sysctl -a | grep cong should list some interesting parameters.
+# This paper uses Cubic
 parser.add_argument('--cong',
                     help="Congestion control algorithm to use",
-                    default="reno")
+                    default="cubic")
 
 # Expt parameters
 args = parser.parse_args()
@@ -103,8 +100,13 @@ def spdy(net):
 
   # Restart webserver in h2.
   start_webserver(net)
-
-  h1.cmd("node ~/epload/emulator/run.js spdy" +
+ 
+  if not args.dg[0].isdigit(): #retransmission test
+	h1.cmd("node epload/emulator/run.js spdy" +
+      " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
+	h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
+  else: #other tests
+	h1.cmd("node epload/emulator/run.js spdy" +
       " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "SPDY experiments done."
 
@@ -118,8 +120,13 @@ def http(net):
 
   # Restart webserver in h2.
   start_webserver(net)
-
-  h1.cmd("node ~/epload/emulator/run.js http" +
+  
+  if not args.dg[0].isdigit(): #retransmission tests
+        h1.cmd("node epload/emulator/run.js http" +
+      " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
+        h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
+  else: #other tests
+        h1.cmd("node epload/emulator/run.js http" +
       " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "HTTP experiments done."
 
@@ -130,7 +137,7 @@ def start_webserver(net):
   h2.cmd("sudo service apache2 start")
   print "Webserver started."
 
-def bufferbloat():
+def run_experiment():
   if not os.path.exists(args.dir):
     os.makedirs(args.dir)
   os.system("sysctl -w net.ipv4.tcp_congestion_control=%s" % args.cong)
@@ -151,4 +158,4 @@ def bufferbloat():
   net.stop()
 
 if __name__ == "__main__":
-  bufferbloat()
+  run_experiment()

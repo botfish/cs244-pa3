@@ -4,187 +4,187 @@
             "a1": "r1_c", 
             "a2": "r2_d", 
             "id": "dep1", 
-            "time": 100
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r3_d", 
+            "id": "dep2", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r4_d", 
+            "id": "dep3", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r5_d", 
+            "id": "dep4", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r6_d", 
+            "id": "dep5", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r7_d", 
+            "id": "dep6", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r8_d", 
+            "id": "dep7", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r9_d", 
+            "id": "dep8", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r10_d", 
+            "id": "dep9", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r11_d", 
+            "id": "dep10", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r12_d", 
+            "id": "dep11", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r13_d", 
+            "id": "dep12", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r14_d", 
+            "id": "dep13", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r15_d", 
+            "id": "dep14", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r16_d", 
+            "id": "dep15", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r17_d", 
+            "id": "dep16", 
+            "time": 10
         }, 
         {
             "a1": "r2_c", 
-            "a2": "r3_d", 
-            "id": "dep2", 
-            "time": 100
-        }, 
-        {
-            "a1": "r3_c", 
-            "a2": "r4_d", 
-            "id": "dep3", 
-            "time": 100
-        }, 
-        {
-            "a1": "r4_c", 
-            "a2": "r5_d", 
-            "id": "dep4", 
-            "time": 100
-        }, 
-        {
-            "a1": "r5_c", 
-            "a2": "r6_d", 
-            "id": "dep5", 
-            "time": 100
-        }, 
-        {
-            "a1": "r6_c", 
-            "a2": "r7_d", 
-            "id": "dep6", 
-            "time": 100
-        }, 
-        {
-            "a1": "r7_c", 
-            "a2": "r8_d", 
-            "id": "dep7", 
-            "time": 100
-        }, 
-        {
-            "a1": "r8_c", 
-            "a2": "r9_d", 
-            "id": "dep8", 
-            "time": 100
-        }, 
-        {
-            "a1": "r9_c", 
-            "a2": "r10_d", 
-            "id": "dep9", 
-            "time": 100
-        }, 
-        {
-            "a1": "r10_c", 
-            "a2": "r11_d", 
-            "id": "dep10", 
-            "time": 100
-        }, 
-        {
-            "a1": "r11_c", 
-            "a2": "r12_d", 
-            "id": "dep11", 
-            "time": 100
-        }, 
-        {
-            "a1": "r12_c", 
-            "a2": "r13_d", 
-            "id": "dep12", 
-            "time": 100
-        }, 
-        {
-            "a1": "r13_c", 
-            "a2": "r14_d", 
-            "id": "dep13", 
-            "time": 100
-        }, 
-        {
-            "a1": "r14_c", 
-            "a2": "r15_d", 
-            "id": "dep14", 
-            "time": 100
-        }, 
-        {
-            "a1": "r15_c", 
-            "a2": "r16_d", 
-            "id": "dep15", 
-            "time": 100
-        }, 
-        {
-            "a1": "r16_c", 
-            "a2": "r17_d", 
-            "id": "dep16", 
-            "time": 100
-        }, 
-        {
-            "a1": "r17_c", 
             "a2": "r18_d", 
             "id": "dep17", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r18_c", 
+            "a1": "r2_c", 
             "a2": "r19_d", 
             "id": "dep18", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r19_c", 
+            "a1": "r2_c", 
             "a2": "r20_d", 
             "id": "dep19", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r20_c", 
+            "a1": "r2_c", 
             "a2": "r21_d", 
             "id": "dep20", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r21_c", 
+            "a1": "r2_c", 
             "a2": "r22_d", 
             "id": "dep21", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r22_c", 
+            "a1": "r2_c", 
             "a2": "r23_d", 
             "id": "dep22", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r23_c", 
+            "a1": "r2_c", 
             "a2": "r24_d", 
             "id": "dep23", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r24_c", 
+            "a1": "r2_c", 
             "a2": "r25_d", 
             "id": "dep24", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r25_c", 
+            "a1": "r2_c", 
             "a2": "r26_d", 
             "id": "dep25", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r26_c", 
+            "a1": "r2_c", 
             "a2": "r27_d", 
             "id": "dep26", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r27_c", 
             "a2": "r28_d", 
             "id": "dep27", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r28_c", 
             "a2": "r29_d", 
             "id": "dep28", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r29_c", 
             "a2": "r30_d", 
             "id": "dep29", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r30_c", 
             "a2": "r31_d", 
             "id": "dep30", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r31_c", 
             "a2": "r32_d", 
             "id": "dep31", 
-            "time": 100
+            "time": 10
         }
     ], 
     "description": "obj_size = 10K, obj_num = 32", 
@@ -195,7 +195,7 @@
             "comps": [
                 {
                     "id": "r1_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evalhtml"
                 }
             ], 
@@ -212,7 +212,7 @@
             "comps": [
                 {
                     "id": "r2_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -229,7 +229,7 @@
             "comps": [
                 {
                     "id": "r3_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -246,7 +246,7 @@
             "comps": [
                 {
                     "id": "r4_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -263,7 +263,7 @@
             "comps": [
                 {
                     "id": "r5_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -280,7 +280,7 @@
             "comps": [
                 {
                     "id": "r6_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -297,7 +297,7 @@
             "comps": [
                 {
                     "id": "r7_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -314,7 +314,7 @@
             "comps": [
                 {
                     "id": "r8_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -331,7 +331,7 @@
             "comps": [
                 {
                     "id": "r9_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -348,7 +348,7 @@
             "comps": [
                 {
                     "id": "r10_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -365,7 +365,7 @@
             "comps": [
                 {
                     "id": "r11_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -382,7 +382,7 @@
             "comps": [
                 {
                     "id": "r12_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -399,7 +399,7 @@
             "comps": [
                 {
                     "id": "r13_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -416,7 +416,7 @@
             "comps": [
                 {
                     "id": "r14_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -433,7 +433,7 @@
             "comps": [
                 {
                     "id": "r15_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -450,7 +450,7 @@
             "comps": [
                 {
                     "id": "r16_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -467,7 +467,7 @@
             "comps": [
                 {
                     "id": "r17_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -484,7 +484,7 @@
             "comps": [
                 {
                     "id": "r18_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -501,7 +501,7 @@
             "comps": [
                 {
                     "id": "r19_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -518,7 +518,7 @@
             "comps": [
                 {
                     "id": "r20_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -535,7 +535,7 @@
             "comps": [
                 {
                     "id": "r21_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -552,7 +552,7 @@
             "comps": [
                 {
                     "id": "r22_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -569,7 +569,7 @@
             "comps": [
                 {
                     "id": "r23_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -586,7 +586,7 @@
             "comps": [
                 {
                     "id": "r24_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -603,7 +603,7 @@
             "comps": [
                 {
                     "id": "r25_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -620,7 +620,7 @@
             "comps": [
                 {
                     "id": "r26_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -637,7 +637,7 @@
             "comps": [
                 {
                     "id": "r27_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -654,7 +654,7 @@
             "comps": [
                 {
                     "id": "r28_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -671,7 +671,7 @@
             "comps": [
                 {
                     "id": "r29_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -688,7 +688,7 @@
             "comps": [
                 {
                     "id": "r30_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -705,7 +705,7 @@
             "comps": [
                 {
                     "id": "r31_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -722,7 +722,7 @@
             "comps": [
                 {
                     "id": "r32_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 

@@ -4,7 +4,7 @@
             "a1": "r1_c", 
             "a2": "r2_d", 
             "id": "dep1", 
-            "time": 100
+            "time": 10
         }
     ], 
     "description": "obj_size = 10K, obj_num = 2", 
@@ -15,7 +15,7 @@
             "comps": [
                 {
                     "id": "r1_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evalhtml"
                 }
             ], 
@@ -32,7 +32,7 @@
             "comps": [
                 {
                     "id": "r2_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 

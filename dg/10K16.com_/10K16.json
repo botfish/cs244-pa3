@@ -4,91 +4,91 @@
             "a1": "r1_c", 
             "a2": "r2_d", 
             "id": "dep1", 
-            "time": 100
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r3_d", 
+            "id": "dep2", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r4_d", 
+            "id": "dep3", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r5_d", 
+            "id": "dep4", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r6_d", 
+            "id": "dep5", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r7_d", 
+            "id": "dep6", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r8_d", 
+            "id": "dep7", 
+            "time": 10
+        }, 
+        {
+            "a1": "r1_c", 
+            "a2": "r9_d", 
+            "id": "dep8", 
+            "time": 10
         }, 
         {
             "a1": "r2_c", 
-            "a2": "r3_d", 
-            "id": "dep2", 
-            "time": 100
-        }, 
-        {
-            "a1": "r3_c", 
-            "a2": "r4_d", 
-            "id": "dep3", 
-            "time": 100
-        }, 
-        {
-            "a1": "r4_c", 
-            "a2": "r5_d", 
-            "id": "dep4", 
-            "time": 100
-        }, 
-        {
-            "a1": "r5_c", 
-            "a2": "r6_d", 
-            "id": "dep5", 
-            "time": 100
-        }, 
-        {
-            "a1": "r6_c", 
-            "a2": "r7_d", 
-            "id": "dep6", 
-            "time": 100
-        }, 
-        {
-            "a1": "r7_c", 
-            "a2": "r8_d", 
-            "id": "dep7", 
-            "time": 100
-        }, 
-        {
-            "a1": "r8_c", 
-            "a2": "r9_d", 
-            "id": "dep8", 
-            "time": 100
-        }, 
-        {
-            "a1": "r9_c", 
             "a2": "r10_d", 
             "id": "dep9", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r10_c", 
+            "a1": "r2_c", 
             "a2": "r11_d", 
             "id": "dep10", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r11_c", 
+            "a1": "r2_c", 
             "a2": "r12_d", 
             "id": "dep11", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r12_c", 
+            "a1": "r2_c", 
             "a2": "r13_d", 
             "id": "dep12", 
-            "time": 100
+            "time": 10
         }, 
         {
-            "a1": "r13_c", 
+            "a1": "r2_c", 
             "a2": "r14_d", 
             "id": "dep13", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r14_c", 
             "a2": "r15_d", 
             "id": "dep14", 
-            "time": 100
+            "time": 10
         }, 
         {
             "a1": "r15_c", 
             "a2": "r16_d", 
             "id": "dep15", 
-            "time": 100
+            "time": 10
         }
     ], 
     "description": "obj_size = 10K, obj_num = 16", 
@@ -99,7 +99,7 @@
             "comps": [
                 {
                     "id": "r1_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evalhtml"
                 }
             ], 
@@ -116,7 +116,7 @@
             "comps": [
                 {
                     "id": "r2_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -133,7 +133,7 @@
             "comps": [
                 {
                     "id": "r3_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -150,7 +150,7 @@
             "comps": [
                 {
                     "id": "r4_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -167,7 +167,7 @@
             "comps": [
                 {
                     "id": "r5_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -184,7 +184,7 @@
             "comps": [
                 {
                     "id": "r6_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -201,7 +201,7 @@
             "comps": [
                 {
                     "id": "r7_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -218,7 +218,7 @@
             "comps": [
                 {
                     "id": "r8_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -235,7 +235,7 @@
             "comps": [
                 {
                     "id": "r9_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -252,7 +252,7 @@
             "comps": [
                 {
                     "id": "r10_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -269,7 +269,7 @@
             "comps": [
                 {
                     "id": "r11_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -286,7 +286,7 @@
             "comps": [
                 {
                     "id": "r12_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -303,7 +303,7 @@
             "comps": [
                 {
                     "id": "r13_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -320,7 +320,7 @@
             "comps": [
                 {
                     "id": "r14_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -337,7 +337,7 @@
             "comps": [
                 {
                     "id": "r15_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 
@@ -354,7 +354,7 @@
             "comps": [
                 {
                     "id": "r16_c", 
-                    "time": 200, 
+                    "time": 10, 
                     "type": "evaljs"
                 }
             ], 

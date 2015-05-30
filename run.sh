@@ -7,6 +7,7 @@ bwnet=10
 delay=50 # RTT = 200ms
 timestamp=$(date +"%d-%H-%M-%S")
 
+# Figure 3 experiments
 for loss in 0 0.5 1 2; do
   dir=result/$timestamp/loss_$loss
   python spdy.py -b $bwnet -d $dir --delay $delay --loss $loss
@@ -28,3 +29,15 @@ done
 
 # graph the results for Figure 3
 python figure3_plot.py -d result/$timestamp/ -o result/$timestamp
+
+# Figure 7 experiments
+for graph in dg/*/; do
+    graph=${graph%*/}
+    graph=${graph##*/}
+    dir=result/$timestamp/retransmissions/$graph
+    python spdy.py -b $bwnet -d $dir --delay $delay --dg $graph
+done
+
+# graph the results for Figure 7
+python figure7_plot.py -d result/$timestamp/ -o result/$timestamp
+echo $timestamp
