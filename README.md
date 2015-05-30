@@ -70,6 +70,23 @@ The graph maker uses the matplotlib and numpy Python libraries. To install:
 sudo apt-get install python-matplotlib
 ```
 
+Test Configurations
+====================================
+The following instructions are not necessary for running our experiments, they
+are here for customized experiments.
+
+Test Parameters Adjustments
+-----------------------------------
+Vim (or your editor) run.sh
+```
+vim run.sh
+```
+Paramters -
+* ```bwnet``` Bandwidth (Mbps).
+* ```delay``` Delay on a single link, RTT/4 (ms).
+* ```loss```  Packet loss rate (%).
+* ```arr```   An array of the dependency graph name.
+
 Dependency Graph Generation
 -----------------------------------
 Make a directory on web server to hold testing web pages
@@ -87,3 +104,10 @@ sudo python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
 ```
 See ``` python gen_dp.py -h ``` for more details.
 
+Epload Specific Configurations
+-----------------------------------
+Vim (or your editor) run.js
+```
+vim epload/emulator/run.js
+```
+Configurations are done by hardcoding into ```options``` variable.
