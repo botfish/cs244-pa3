@@ -31,7 +31,7 @@ done
 python figure3_plot.py -d result/$timestamp/ -o result/$timestamp
 
 # Figure 7 experiments
-for graph in dg/www*/; do
+for graph in dg/*/; do
     graph=${graph%*/}
     graph=${graph##*/}
     dir=result/$timestamp/retransmissions/$graph
