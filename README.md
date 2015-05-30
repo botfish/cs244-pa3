@@ -3,7 +3,7 @@ Reproducing SPDY Test Results
 ====================================
 The goal of this project is to reproduce some of the graphs found in [this paper](https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-wang_xiao_sophia.pdf).
 
-Code and tools for this paper were published by the authors [here](https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-wang_xiao_sophia.pdf).
+Code and tools for this paper were published by the authors [here](http://wprof.cs.washington.edu/spdy/tool/)
 
 More information about SDPY in general can be found [here](https://www.chromium.org/spdy).
 
@@ -22,7 +22,7 @@ deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-updates main restricted univ
 deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-security main restricted universe multiverse
 
 # Optional
-#deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-backports main restricted universe multiverse
+# deb http://old-releases.ubuntu.com/ubuntu/ CODENAME-backports main restricted universe multiverse
 ```
 
 Installing Apache Webserver
@@ -62,52 +62,6 @@ Download the client:
 wget http://wprof.cs.washington.edu/spdy/tool/epload.tar.gz
 tar -xvf epload.tar.gz
 ```
-
-Dependency Graph
------------------------------------
-Download Web Objects to the webserver
-```
-wget http://wprof.cs.washington.edu/spdy/tool/server.tar.gz
-tar -xvf server.tar.gz
-```
-
-Download Dependency Graphs to the webserver
-```
-wget http://wprof.cs.washington.edu/spdy/tool/dependency_graphs.tar.gz
-tar -xvf dependency_graphs.tar.gz
-```
-
-### Localhost Specific Instructions
-The following instructions are for experiments to be run on localhost, instructions
-to be run on Mininet could be very different
-
-Move pages to localhost
-```
-sudo cp -r server/* /var/www/
-```
-
-Rewrite URLs (host and path) in the dependency graphs
-x = website of interest.
-```
-vi dependency_graphs/x/x.json
-```
-In vim command, replace host with localhost.
-```
-:%s/ultralisk.cs.washington.edu/localhost/g
-```
-
-### To generate dependency graph
-First need to have base webpage on server
-```
-sudo cp -r rawobj /var/www/pages
-```
-Then can run gen_dp.py, for example to generate a dependency graph with
-64 10K objects.
-```
-python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
-```
-Use ``` python gen_dp.py -h ``` for details on options.
-
 Python Dependencies
 ---------------------------------
 The graph maker uses the matplotlib and numpy Python libraries. To install:
@@ -115,3 +69,21 @@ The graph maker uses the matplotlib and numpy Python libraries. To install:
 ```
 sudo apt-get install python-matplotlib
 ```
+
+Dependency Graph Generation
+-----------------------------------
+Make a directory on web server to hold testing web pages
+```
+sudo mkdir /var/www/pages
+```
+Copy base web objects to server testing page
+```
+sudo cp -r rawobj.com /var/www/pages
+```
+Then run gen_dp.py, for example to generate a dependency graph with
+64 10K objects.
+```
+python gen_dp.py -S 10 -N 64 -O dg/10K64.com_/
+```
+See ``` python gen_dp.py -h ``` for more details.
+
