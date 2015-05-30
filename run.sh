@@ -37,3 +37,6 @@ for graph in dg/www*/; do
     dir=result/$timestamp/retransmissions/$graph
     python spdy.py -b $bwnet -d $dir --delay $delay --dg $graph
 done
+
+# graph the results for Figure 7
+python figure7_plot.py -d result/$timestamp/ -o result/$timestamp

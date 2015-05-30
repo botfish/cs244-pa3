@@ -16,7 +16,7 @@ from argparse import ArgumentParser
 import matplotlib.pyplot as plt
 import numpy as np
 
-parser = ArgumentParser(description="Figure 3 Graph Generation")
+parser = ArgumentParser(description="Figure 3 Graph Generator")
 
 parser.add_argument('--dir', '-d',
                     help="Directory where the input is located",
@@ -116,6 +116,7 @@ def generateGraph(data, name):
 
 
 if __name__ == "__main__":
+  print "Plotting Figure 3..."
   parseData()
   for key, value in extracted_data.iteritems():
   	generateGraph(value, key)
