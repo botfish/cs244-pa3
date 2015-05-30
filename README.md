@@ -7,7 +7,15 @@ Code and tools for this paper were published by the authors [here](http://wprof.
 
 More information about SDPY in general can be found [here](https://www.chromium.org/spdy).
 
-Environment Setup
+Simple Experiment Reproduction
+===================================
+1. Start an EC2 instance of our AMI image {insert name here}. We used a c3.large instance.
+2. Start the instance and SSH into it
+3. ```cd cs244-pa3```
+4. ```sudo ./run.sh```
+5. The results will be in the “result” folder in cs244-pa3
+
+Complete Environment Setup
 ====================================
 The starting system was a VM provided by CS 244 for Project 2.
 AMI ID: CS244-Win13-Mininet (ami-7eab204e)
