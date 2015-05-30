@@ -49,6 +49,21 @@ sudo dpkg -i mod-spdy-beta_current_amd64.deb
 sudo service apache2 restart
 ```
 
+Add the server objects to Apache:
+```
+wget http://wprof.cs.washington.edu/spdy/tool/server.tar.gz
+tar -xvf server.tar.gz
+sudo cp -r server/* /var/www/
+```
+
+Python Dependencies
+---------------------------------
+The graph maker uses the matplotlib and numpy Python libraries. To install:
+
+```
+sudo apt-get install python-matplotlib
+```
+
 Note: At this point, you could simply use the code in this repository as it is. Further instructions are included to give insights about how we constructed our setup.
 
 Installing SDPY Client
@@ -81,15 +96,6 @@ Remove lines of code that break the client:
     return;
 ```
 The isReady() function does not appear to exist, so this will throw an error if not removed
-
-
-Python Dependencies
----------------------------------
-The graph maker uses the matplotlib and numpy Python libraries. To install:
-
-```
-sudo apt-get install python-matplotlib
-```
 
 Test Configurations
 ====================================
