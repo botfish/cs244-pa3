@@ -137,7 +137,7 @@ def start_webserver(net):
   h2.cmd("sudo service apache2 start")
   print "Webserver started."
 
-def bufferbloat():
+def run_experiment():
   if not os.path.exists(args.dir):
     os.makedirs(args.dir)
   os.system("sysctl -w net.ipv4.tcp_congestion_control=%s" % args.cong)
@@ -158,4 +158,4 @@ def bufferbloat():
   net.stop()
 
 if __name__ == "__main__":
-  bufferbloat()
+  run_experiment()

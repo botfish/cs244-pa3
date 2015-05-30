@@ -38,33 +38,6 @@ extracted_data = {'http': [], 'spdy': []}
 # name of graph
 name = "tcp_retransmissions"
 
-# extracts the variable parameter from the name
-def getDirName(name):
-	name = os.path.basename(name)
-	for g in graphs:
-		if g in name:
-			return name.strip(g+"_")
-	return name
-
-# adds the data to the correct key-value pair of the results
-def addData(data, name):
-	if 'loss' in name:
-		index = loss_map[data[0]]
-		extracted_data['Loss'][0][index] = data[0]
-		extracted_data['Loss'][1][index] = data[1]
-		extracted_data['Loss'][2][index] = data[2]
-	# in these cases, the lexographic ordering the data comes in is not the ordering we want
-	elif 'objnum' in name: 
-		index = objnum_map[data[0]]
-		extracted_data['Object Number'][0][index] = data[0]
-		extracted_data['Object Number'][1][index] = data[1]
-		extracted_data['Object Number'][2][index] = data[2]
-	elif 'objsize' in name:
-		index = objsize_map[data[0]]
-		extracted_data['Object Size'][0][index] = data[0]
-		extracted_data['Object Size'][1][index] = data[1]
-		extracted_data['Object Size'][2][index] = data[2]
-
 # parse the number of retransmissions out of the files
 def parseData():
 	print "Parsing data"
@@ -86,6 +59,11 @@ def parseData():
 def generateGraph():
 	print "Generating graph..."
 	figure, axis = plt.subplots()
+
+	# because there is no way to "reset" the netstat counters without rebooting the hosts,
+	# the SPDY numbers (which run first) must be subtracted from the HTTP numbers
+	adjusted_http = [a - b for a, b in zip(extracted_data['http'], extracted_data['spdy'])]
+	extracted_data['http'] = adjusted_http
 
 	for key, value in extracted_data.iteritems():
 		# sort the data
