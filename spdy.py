@@ -102,11 +102,11 @@ def spdy(net):
   start_webserver(net)
  
   if not args.dg[0].isdigit(): #retransmission test
-	h1.cmd("node ~/epload/emulator/run.js spdy" +
+	h1.cmd("node epload/emulator/run.js spdy" +
       " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
 	h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
   else: #other tests
-	h1.cmd("node ~/epload/emulator/run.js spdy" +
+	h1.cmd("node epload/emulator/run.js spdy" +
       " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "SPDY experiments done."
 
@@ -122,11 +122,11 @@ def http(net):
   start_webserver(net)
   
   if not args.dg[0].isdigit(): #retransmission tests
-        h1.cmd("node ~/epload/emulator/run.js http" +
+        h1.cmd("node epload/emulator/run.js http" +
       " dg/%s/ > %s/%s_epload" % (args.dg, args.dir, outfile))
         h1.cmd("netstat -s > %s/%s_netstat" % (args.dir, outfile))
   else: #other tests
-        h1.cmd("node ~/epload/emulator/run.js http" +
+        h1.cmd("node epload/emulator/run.js http" +
       " dg/%s.com_/ > %s/%s" % (args.dg, args.dir, outfile))
   print "HTTP experiments done."
 
