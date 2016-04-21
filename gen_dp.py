@@ -9,7 +9,7 @@ parser = ArgumentParser(description="Generate dependecy graph")
 parser.add_argument('--size', '-S',
                     type=int,
                     help="Size of each object: 1 (1K), 10 (10K), 100(100K)," +
-                    "-1(100B)",
+                    "1000(1M), -1(100B)",
                     required=True)
 parser.add_argument('--num', '-N',
                     type=int,
@@ -34,7 +34,11 @@ def gen():
   host = "10.0.0.2"
   time = args.time
   dep_time = args.deptime
-  if args.size > 0:
+  if args.size >= 1000:
+    path = "/pages/rawobj.com/obj_1M.js"
+    name = '1M' + str(args.num)
+    desc = "obj_size = 1M, " + "obj_num = " + str(args.num)
+  elif args.size > 0:
     path = "/pages/rawobj.com/obj_" + str(args.size) + "K.js"
     name = str(args.size) + 'K' + str(args.num)
     desc = "obj_size = " + str(args.size) + "K, " + "obj_num = " + str(args.num)
